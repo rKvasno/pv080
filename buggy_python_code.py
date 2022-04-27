@@ -5,6 +5,7 @@ import subprocess
 import base64
 import flask
 import Pickle
+import re
 
 # Input injection
 def transcode_file(request, filename):
@@ -24,7 +25,8 @@ class RunBinSh(object):
         return (subprocess.Popen, (('/bin/sh',),))
 
 def import_urlib_version(version):
-    exec("import urllib%s as urllib" % version)
+    if(re.match('([0-9]+\.)*[0-9]+',version))
+        exec("import urllib%s as urllib" % version)
 
 @app.route('/')
 def index():
